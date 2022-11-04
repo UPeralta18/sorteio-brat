@@ -5,17 +5,50 @@
         function newNumber() {
             const box = document.getElementById('generatedNumber');
             let maxNumber = document.getElementById('maxNumber').value;
-            for (let i = 0; i < 50000; i ++) {
+            for (let i = 0; i < 100000; i ++) {
                 let newNumber = Math.floor(Math.random() *  maxNumber);
                 setTimeout( function () {
-                    box.innerHTML = newNumber;
+                    box.innerHTML = `<p>${newNumber}</p>`;
                 }, 1);
             }
+            setTimeout( function () {
+                box.classList.add('angry-animate');
+            }, 1500);
+            box.classList.remove('angry-animate');
+            //após 5s, adicionar uma class com animação no número escolhido
         }
     </script>
     
     <style>
-        body {
+        html, body {
+            height: 100%;
+            background-color: #63d066;
+            overflow-y: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .angry-animate {
+            -webkit-animation:zoom-in-out 1s cubic-bezier(0.60,1,0.70,0) 0s 1 normal;
+            -moz-animation:zoom-in-out 1s cubic-bezier(0.60,1,0.70,0) 0s 1 normal;
+            -ms-animation:zoom-in-out 1s cubic-bezier(0.60,1,0.70,0) 0s 1 normal;
+            animation:zoom-in-out 1s cubic-bezier(0.60,1,0.70,0) 0s 1 normal;
+        }
+        
+        @-webkit-keyframes zoom-in-out {
+            0%{ -webkit-transform: scale(1); transform: scale(1); }
+            50%{ -webkit-transform: scale(1.2); transform: scale(1.2); }
+            100%{ -webkit-transform: scale(1); transform: scale(1); }
+        }
+        
+        @keyframes zoom-in-out {
+            0%{ -ms-transform: scale(1); transform: scale(1); }
+            50%{ -ms-transform: scale(1.2); transform: scale(1.2); }
+            100%{ -ms-transform: scale(1); transform: scale(1); }
+        }
+        
+        main {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -24,11 +57,11 @@
             background-color: #63d066;
         }
         
-        body input:focus, textarea:focus, select:focus {
+        main input:focus, textarea:focus, select:focus {
             outline: none;
         }
         
-        body input[type=text] {
+        main input[type=text] {
             background: none;
             border: none;
             border-bottom: 1.5px solid;
@@ -36,19 +69,30 @@
             margin-left: 1%;
         }
         
-        body .logo img {
-            height: 500px;
+        main .logo img {
+            width: 450px;
         }
         
-        body .generator {
+        main .generator {
             display: flex;
             align-items: center;
             flex-direction: column;
         }
         
-        body .generator * {
+        main .generator * {
             display: block;
             margin-top: 10px;
+        }
+        
+        main .generator .generatedNumber {
+            height: 120px;
+        }
+        
+        main .generator .generatedNumber p{
+            font-size: 60px;
+            font-weight: bolder;
+            color: #5d2da5;
+            text-shadow: 2.5px 1.2px 2px rgb(46 10 56);
         }
     </style>
     
@@ -57,13 +101,15 @@
     <link rel="icon" type="image/x-icon" href="images/icon.png">
 </head>
 <body>
-    <div class="logo">
-        <img src="images/logo.png" />
-    </div>
-    <div class="generator">
-        <input type="text" name="maxNumber" id="maxNumber" placeholder="Máximo" />
-        <button onclick="newNumber()">Sortear</button>
-        <div id="generatedNumber"></div>
-    </div>
+    <main>
+        <div class="logo">
+            <img src="images/logo.png" />
+        </div>
+        <div class="generator">
+            <input type="text" name="maxNumber" id="maxNumber" placeholder="Máximo" />
+            <button onclick="newNumber()">Sortear</button>
+            <div id="generatedNumber" class="generatedNumber"></div>
+        </div>
+    </main>
 </body>
 </html>
