@@ -4,11 +4,13 @@
     <script>
         function newNumber() {
             const box = document.getElementById('generatedNumber');
-            let minNumber = document.getElementById('minNumber').value;
-            // let maxNumber = document.getElementById('maxNumber').value;
-            // let newNumber = Math.floor(Math.random() * (maxNumber - minNumber) + minNumber);
-            let newNumber = Math.floor(Math.random() *  maxNumber);
-            box.innerHTML = newNumber;
+            let maxNumber = document.getElementById('maxNumber').value;
+            for (let i = 0; i < 50000; i ++) {
+                let newNumber = Math.floor(Math.random() *  maxNumber);
+                setTimeout( function () {
+                    box.innerHTML = newNumber;
+                }, 1);
+            }
         }
     </script>
     
@@ -40,11 +42,11 @@
         
         body .generator {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            align-items: center;
+            flex-direction: column;
         }
         
-        body .generator button {
+        body .generator * {
             display: block;
             margin-top: 10px;
         }
@@ -59,7 +61,6 @@
         <img src="images/logo.png" />
     </div>
     <div class="generator">
-        <!-- <input type="text" name="minNumber" id="minNumber" placeholder="Mínimo" /> -->
         <input type="text" name="maxNumber" id="maxNumber" placeholder="Máximo" />
         <button onclick="newNumber()">Sortear</button>
         <div id="generatedNumber"></div>
