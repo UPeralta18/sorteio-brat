@@ -19,6 +19,11 @@
     </script>
     
     <style>
+        @font-face {
+            font-family: GazW00;
+            src: url('fonts/Gaz\ W00\ Bold\ Italic.ttf');
+        }
+        
         html, body {
             height: 100%;
             background-color: #63d066;
@@ -71,14 +76,8 @@
             text-align: center;
         }
         
-        main .logo {
-            overflow: hidden;
-            padding-top: 7px;
-        }
-        
         main .logo img {
             width: 450px;
-            transform: rotate(-2.5deg);
         }
         
         main .generator {
@@ -96,11 +95,16 @@
             height: 120px;
         }
         
-        main .generator .generatedNumber p{
+        main .generator .generatedNumber p {
             font-size: 60px;
             font-weight: bolder;
-            color: #5d2da5;
-            text-shadow: 2.5px 1.2px 2px rgb(46 10 56);
+            color: #f17511;
+            text-shadow: 1px 1px 0px rgba(46, 10, 66, 1), 
+                        2px 2px 0px rgba(46, 10, 66, 1), 
+                        3px 3px 0px rgba(46, 10, 66, 1),
+                        4px 4px 0px rgba(46, 10, 66, 1),
+                        5px 5px 0px rgba(46, 10, 66, 1);
+            font-family: GazW00;
         }
         
         main .generator button {
