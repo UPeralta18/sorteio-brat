@@ -13,9 +13,8 @@
             }
             setTimeout( function () {
                 box.classList.add('angry-animate');
-            }, 1500);
+            }, 500);
             box.classList.remove('angry-animate');
-            //após 5s, adicionar uma class com animação no número escolhido
         }
     </script>
     
@@ -27,13 +26,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            background-image: url('images/bg.png');
+            background-position: top center;
         }
         
         .angry-animate {
-            -webkit-animation:zoom-in-out 1s cubic-bezier(0.60,1,0.70,0) 0s 1 normal;
-            -moz-animation:zoom-in-out 1s cubic-bezier(0.60,1,0.70,0) 0s 1 normal;
-            -ms-animation:zoom-in-out 1s cubic-bezier(0.60,1,0.70,0) 0s 1 normal;
-            animation:zoom-in-out 1s cubic-bezier(0.60,1,0.70,0) 0s 1 normal;
+            -webkit-animation:zoom-in-out 1s ease 0s 1 normal;
+            -moz-animation:zoom-in-out 1s ease 0s 1 normal;
+            -ms-animation:zoom-in-out 1s ease 0s 1 normal;
+            animation:zoom-in-out 1s ease 0s 1 normal;
         }
         
         @-webkit-keyframes zoom-in-out {
@@ -54,7 +55,6 @@
             align-items: center;
             align-content: center;
             justify-content: center;
-            background-color: #63d066;
         }
         
         main input:focus, textarea:focus, select:focus {
@@ -65,12 +65,20 @@
             background: none;
             border: none;
             border-bottom: 1.5px solid;
-            width: 48%;
+            width: 25%;
             margin-left: 1%;
+            font-size: 30px;
+            text-align: center;
+        }
+        
+        main .logo {
+            overflow: hidden;
+            padding-top: 7px;
         }
         
         main .logo img {
             width: 450px;
+            transform: rotate(-2.5deg);
         }
         
         main .generator {
@@ -94,6 +102,39 @@
             color: #5d2da5;
             text-shadow: 2.5px 1.2px 2px rgb(46 10 56);
         }
+        
+        main .generator button {
+            background-color: #63d066;
+            border: 2px solid #2e0a42;
+            border-radius: 30px;
+            box-shadow: #2e0a42 4px 4px 0 0;
+            color: #2e0a42;
+            cursor: pointer;
+            display: inline-block;
+            font-weight: 600;
+            font-size: 18px;
+            padding: 0 18px;
+            line-height: 50px;
+            text-align: center;
+            text-decoration: none;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+        
+        main .generator button:hover {
+            background-color: #f17511;
+        }
+        
+        main .generator button:active {
+            box-shadow: #2e0a42 2px 2px 0 0;
+            transform: translate(2px, 2px);
+        }
+        
+        main .generator button {
+            min-width: 120px;
+            padding: 0 25px;
+        }
     </style>
     
     <title>BRAT Halloween 2022</title>
@@ -106,7 +147,7 @@
             <img src="images/logo.png" />
         </div>
         <div class="generator">
-            <input type="text" name="maxNumber" id="maxNumber" placeholder="Máximo" />
+            <input type="text" name="maxNumber" id="maxNumber" placeholder="Limite" />
             <button onclick="newNumber()">Sortear</button>
             <div id="generatedNumber" class="generatedNumber"></div>
         </div>
